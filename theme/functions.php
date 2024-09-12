@@ -11,6 +11,7 @@ if (!function_exists('test_setup')) {
             'header-text' => '',
         ]);
         add_theme_support('title-tag');
+        add_theme_support('post-thumbnails');
     }
     add_action('after_setup_theme', 'test_setup');
 }
