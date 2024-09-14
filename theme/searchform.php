@@ -1,0 +1,3 @@
+<form role="search" method="get" id="searchform" class="form-group" action="<?php echo esc_url(home_url('/')); ?>">
+    <input type="text" placeholder="поиск" class="form-control" value="<?php echo get_search_query(); ?>" name="s" id="s">
+</form>

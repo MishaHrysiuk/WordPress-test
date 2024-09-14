@@ -142,3 +142,17 @@ function my_navigation_template($template, $class)
 the_posts_pagination(array(
     'end_size' => 2,
 ));
+
+
+function test_widgets_init()
+{
+    register_sidebar([
+        'name' => esc_html__('Sidebar blog', 'test'),
+        'id'   => 'sidebar-blog',
+        'before_widget' => '<section id="%1$s" class="sidebar-widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h5 class="widget-title mb-3">',
+        'after_title'   => '</h5>',
+    ]);
+}
+add_action('widgets_init', 'test_widgets_init');
