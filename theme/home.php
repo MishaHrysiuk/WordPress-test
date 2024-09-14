@@ -27,15 +27,15 @@
                             <div class="<?php echo $counter++ % 3 == 0 ? "col-lg-12" : "col-lg-6"; ?>">
                                 <div class="blog-post">
                                     <?php
-                                    // if (has_post_thumbnail()) {
-                                    //     the_post_thumbnail('medium', [
-                                    //         'class' => 'img-fluid'
-                                    //     ]);
-                                    // } else {
-                                    //     echo '<img src="' . get_template_directory_uri() . '/images/blog/blog-1.jpg" alt="" class="img-fluid">';
-                                    // }
+                                    if (has_post_thumbnail()) {
+                                        the_post_thumbnail('post-thumbnail', [
+                                            'class' => 'img-fluid w-100'
+                                        ]);
+                                    } else {
+                                        echo '<img src="' . get_template_directory_uri() . '/images/blog/blog-1.jpg" alt="" class="img-fluid w-100">';
+                                    }
                                     ?>
-                                    <img src="/images/blog/blog-1.jpg" alt="" class="img-fluid">
+                                    <img src="/images/blog/blog-1.jpg" alt="" class="img-fluid w-100">
                                     <div class="mt-4 mb-3 d-flex">
                                         <div class="post-author mr-3">
                                             <i class="fa fa-user"></i>
@@ -57,6 +57,21 @@
                     else: ?>
                         No posts.
                     <?php endif; ?>
+                    <div class="col-lg-12">
+                        <?php the_posts_pagination([
+                            'show_all' => false, // all pages involved in pagination are shown
+                            'end_size' => 1,     // number of pages at the ends
+                            'mid_size' => 1,     // number of pages around the current page
+                            'prev_next' => true, // whether to display 'previous/next page' side links.
+                            'prev_text' => __('Previous>+<<'),
+                            'next_text' => __('Next->>'),
+                            'add_args' => false,  // Array of arguments (query variables) to add to links.
+                            'add_fragment' => '', // Text to be added to all links.
+                            'screen_reader_text' => __('Posts navigation'),
+                            'before_page_number' => '',
+                            'after_page_number'  => ''
+                        ]); ?>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4">

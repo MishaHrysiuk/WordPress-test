@@ -12,6 +12,7 @@ if (!function_exists('test_setup')) {
         ]);
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
+        set_post_thumbnail_size(730, 480);
     }
     add_action('after_setup_theme', 'test_setup');
 }
@@ -105,3 +106,39 @@ class bootstrap_4_walker_nav_menu extends Walker_Nav_menu
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
 }
+
+add_filter('intermediate_image_sizes', 'intermediate_delete_image_sizes');
+function intermediate_delete_image_sizes($sizes)
+{
+    return array_diff($sizes, [
+        'medium_large',
+        'large',
+        '1536x1536',
+        '2048x2048'
+    ]);
+}
+
+// removes H2 from the pagination template
+add_filter('navigation_markup_template', 'my_navigation_template', 10, 2);
+
+function my_navigation_template($template, $class)
+{
+    /*
+	Type of basic template:
+	<nav class="navigation %1$s" role="navigation">
+		<h2 class="screen-reader-text">%2$s</h2>
+		<div class="nav-links">%3$s</div>
+	</nav>
+	*/
+
+    return '
+	<nav class="navigation %1$s" role="navigation">
+		<div class="nav-links">%3$s</div>
+	</nav>
+	';
+}
+
+// output the pagination
+the_posts_pagination(array(
+    'end_size' => 2,
+));
