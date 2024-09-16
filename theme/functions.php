@@ -48,7 +48,8 @@ function test_menus()
 {
     $locations = [
         'header' => __('Header menu', 'test'),
-        'footer' => __("Footer menu", 'test')
+        'footer-information' => __("Footer Information menu", 'test'),
+        'footer-links' => __("Footer Links menu", 'test')
     ];
     register_nav_menus($locations);
 }
@@ -153,6 +154,24 @@ function test_widgets_init()
         'after_widget'  => '</section>',
         'before_title'  => '<h5 class="widget-title mb-3">',
         'after_title'   => '</h5>',
+    ]);
+
+    register_sidebar([
+        'name' => esc_html__('Sidebar footer-text', 'test'),
+        'id'   => 'sidebar-footer-text',
+        'before_widget' => '<div id="%1$s" class="footer-widget footer-link %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ]);
+
+    register_sidebar([
+        'name' => esc_html__('Sidebar footer-contacts', 'test'),
+        'id'   => 'sidebar-footer-contacts',
+        'before_widget' => '<div id="%1$s" class="footer-widget footer-link %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
     ]);
 }
 add_action('widgets_init', 'test_widgets_init');
