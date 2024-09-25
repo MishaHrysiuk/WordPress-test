@@ -63,7 +63,7 @@
                             'end_size' => 1,     // number of pages at the ends
                             'mid_size' => 1,     // number of pages around the current page
                             'prev_next' => true, // whether to display 'previous/next page' side links.
-                            'prev_text' => __('Previous>+<<'),
+                            'prev_text' => __('<<-Previous'),
                             'next_text' => __('Next->>'),
                             'add_args' => false,  // Array of arguments (query variables) to add to links.
                             'add_fragment' => '', // Text to be added to all links.

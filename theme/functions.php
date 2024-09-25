@@ -120,7 +120,7 @@ function intermediate_delete_image_sizes($sizes)
 }
 
 // removes H2 from the pagination template
-add_filter('navigation_markup_template', 'download_navigation_template', 10, 2);
+//add_filter('navigation_markup_template', 'download_navigation_template', 10, 2);
 
 function download_navigation_template($template, $class)
 {
@@ -140,9 +140,9 @@ function download_navigation_template($template, $class)
 }
 
 // output the pagination
-the_posts_pagination(array(
-    'end_size' => 2,
-));
+// the_posts_pagination(array(
+//     'end_size' => 2,
+// ));
 
 
 function test_widgets_init()
